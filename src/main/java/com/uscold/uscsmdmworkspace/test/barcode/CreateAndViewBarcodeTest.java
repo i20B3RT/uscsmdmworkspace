@@ -48,6 +48,7 @@ public class CreateAndViewBarcodeTest extends AbstractTestClass{
 
 //        WebElement confAlert = driver.findElement(By.xpath("//img[contains(@src,'/ewm/images/ico_success.png')]"));
 
+
         click(chooseValueFromBarcodePopUpHeaderCustomerDropDown("cust_chosen", "107 - AMYS - PFD-1073/1182"));
 
         driver.findElement(By.id("basicSrch")).click();
