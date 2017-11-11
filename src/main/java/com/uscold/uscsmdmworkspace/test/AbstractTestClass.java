@@ -27,13 +27,6 @@ public abstract class AbstractTestClass {
 
     public static final String EWM_URL = System.getProperty("ewm.url");
 
-    //Method for adding timestamp to add to product code
-    // Create object of SimpleDateFormat class and decide the format
-//    DateFormat dateFormat = new SimpleDateFormat("MMddHHMMSS ");
-
-
-//    String timestamp = String.valueOf(System.currentTimeMillis());
-
     @BeforeClass
     public void beforeClassInit() {driver = initDriver();
         LOGGER.warn("EWM_URL:" + EWM_URL);
@@ -60,7 +53,6 @@ public abstract class AbstractTestClass {
     private ChromeOptions getOptions(boolean isHeadless) {
         LOGGER.info("WARNING Test in headless mode");
         ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("disable-infobars");
         if (isHeadless) {
             chromeOptions.addArguments("--headless");
             chromeOptions.addArguments("--test-type");
@@ -68,8 +60,7 @@ public abstract class AbstractTestClass {
             chromeOptions.addArguments("--no-first-run");
             chromeOptions.addArguments("--no-default-browser-check");
             chromeOptions.addArguments("--ignore-certificate-errors");
-//            chromeOptions.addArguments("--start-maximized");
-//            chromeOptions.addArguments("disable-infobars");
+            chromeOptions.addArguments("--start-maximized");
         }
 
         return chromeOptions;

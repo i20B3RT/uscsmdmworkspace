@@ -46,6 +46,17 @@
             </properties>
         </profile>
         <profile>
+            <id>9082</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <user.username>superuser</user.username>
+                <user.password>superuser</user.password>
+                <ewm.url>http://10.1.100.197:9082/ewm/home.htm</ewm.url>
+            </properties>
+        </profile>
+        <profile>
             <id>9113</id>
             <activation>
                 <activeByDefault>true</activeByDefault>

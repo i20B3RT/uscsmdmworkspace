@@ -18,12 +18,12 @@ package com.uscold.uscsmdmworkspace.test.barcode;
         import java.util.List;
 
 
-public class CreateAndViewBarcodeTest extends AbstractTestClass{
+public class CreateAndViewBarcodeTest extends AbstractTestClass {
 
     private boolean succesfullyCreated;
+
     @Test
     public void createBarcodeTest() {
-
         PageHelper.chooseModule(driver, "Barcode Capture Maintenance");
         PageHelper.chooseWarehouse(driver, 160);
         PageHelper.waitForJSandJQueryToLoad(driver);
@@ -37,7 +37,6 @@ public class CreateAndViewBarcodeTest extends AbstractTestClass{
         click(chooseValueFromBarcodePopUpGridDataFieldDropDown("new_row2_dataFieldDesc_chosen", "Pallet Id"));
 
 
-
         driver.findElement(By.id("new_row2_length")).sendKeys("7");
         driver.findElement(By.id("new_row2_startPosition")).sendKeys("1");
 
@@ -46,43 +45,24 @@ public class CreateAndViewBarcodeTest extends AbstractTestClass{
 
         driver.findElement(By.id("saveNewTemplate")).click();
 
-//        WebElement confAlert = driver.findElement(By.xpath("//img[contains(@src,'/ewm/images/ico_success.png')]"));
 
+        WebElement statusMsg = driver.findElement(By.id("reportSuccessMsg"));
+        if (!statusMsg.isDisplayed() && !statusMsg.getText().toLowerCase().contains("created successfully"))
+            throw new RuntimeException("Failed to create barcode");
 
-        click(chooseValueFromBarcodePopUpHeaderCustomerDropDown("cust_chosen", "107 - AMYS - PFD-1073/1182"));
+        succesfullyCreated = true;
+    }
+
+    @Test
+    public void viewCreatedBarcode() {
+        Assert.assertTrue("Skip. Barcode wasn't created", succesfullyCreated);
+        click(chooseValueFromBarcodeCustomerDropDown("editCustomer_chosen", "107 - AMYS - PFD-1073/1182"));
 
         driver.findElement(By.id("basicSrch")).click();
 
-
-//        public static WebElement waitForElementPresent(WebDriver driver, final By selector, int timeOutInSeconds) {
-//        WebElement confAlert = driver.findElement(By.xpath("//img[contains(@src,'/ewm/images/ico_success.png')]"));
-//
-//        try{
-//                WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
-//            confAlert = wait.until(ExpectedConditions.presenceOfElementLocated(selector));
-//
-//                return confAlert;
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//            return null;
-//        }
-
-//        String url = driver.getCurrentUrl();
-//        if (!(confAlert.contains("product/productSearch?") && url.contains("hasSuccessMsg=true"))) {
-//            try {
-//                Assert.assertFalse(driver.findElement(By.id("prodCode.errors")).getText().toLowerCase().contains("duplicate"), "Product with this product code already exists. \n");
-//            } catch (Exception ex) {
-//            }
-//            throw new RuntimeException("Can`t add this product code.");
-//        }
-//
-//        createdSuccessfully = true;
-
-        //*[@id="reportSuccessMsg"]/img
-
-
+        PageHelper.waitForJSandJQueryToLoad(driver);
     }
+
 
     //Capture New field - Header - Data Field Dropdown
     private WebElement chooseValueFromBarcodeCustomerDropDown(String id, String value) {
@@ -135,8 +115,6 @@ public class CreateAndViewBarcodeTest extends AbstractTestClass{
         List<WebElement> accTypes = accTypeContainer.findElements(By.xpath("//div[@class='chosen-drop']/ul/li"));
 //*[@id="new_row3_dataFieldDesc_chosen"]/a
         return accTypes.stream().filter(el -> el.getAttribute("innerText").trim().equalsIgnoreCase(value)).findFirst().get();
-
-
     }
 
 

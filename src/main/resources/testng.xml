@@ -6,11 +6,29 @@
     </listeners>
     <test name="create customer">
         <classes>
-            <class name="com.uscold.uscsmdmworkspace.test.customers.ViewAllAndViewCreatedCustomersPageTest"/>
-            <class name="com.uscold.uscsmdmworkspace.test.customers.CreateAndViewCreatedCustomerTest"/>
+            <!--<class name="com.uscold.uscsmdmworkspace.test.customers.ViewAllAndViewCreatedCustomersPageTest"/>-->
+            <!--<class name="com.uscold.uscsmdmworkspace.test.customers.CreateAndViewCreatedCustomerTest"/>-->
+            <class name="com.uscold.uscsmdmworkspace.test.customers.CreateEnterpriseCustomerAndPushToWarehouseTest"/>
         </classes>
     </test>
-    <!--<test name="create product">-->
+    <!--<test name="create consignee">-->
+        <!--<classes>-->
+            <!--<class name="com.uscold.uscsmdmworkspace.test.consignee.CreateNewConsigneeAndViewTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="create barcode">-->
+        <!--<classes>-->
+            <!--<class name="com.uscold.uscsmdmworkspace.test.barcode.CreateAndViewBarcodeTest"/>-->
+            <!--&lt;!&ndash;<class name="com.uscold.uscsmdmworkspace.test.barcode.UpdateAndViewBarcodeTest"/>&ndash;&gt;-->
+        <!--</classes>-->
+    <!--</test>-->
+    <!--<test name="assign profile">-->
+        <!--<classes>-->
+            <!--<class name="com.uscold.uscsmdmworkspace.test.profile.AssingProfileAndViewAssignment"/>-->
+            <!--&lt;!&ndash;<class name="com.uscold.uscsmdmworkspace.test.barcode.UpdateAndViewBarcodeTest"/>&ndash;&gt;-->
+        <!--</classes>-->
+    <!--</test>-->
+<!--<test name="create product">-->
         <!--<classes>-->
             <!--<class name="com.uscold.uscsmdmworkspace.test.product.CreateAndViewCreatedProductTest"/>-->
             <!--<class name="com.uscold.uscsmdmworkspace.test.product.UpdateAndViewCreatedProductTest"/>-->
